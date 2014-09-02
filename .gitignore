@@ -13,6 +13,9 @@
 # Sphinx docs:
 build
 
+# Bower dependencies
+/activeseed/components
+
 # SQLite3 database files:
 *.db
 

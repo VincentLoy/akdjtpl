@@ -6,10 +6,8 @@
 from os import getenv
 
 import dj_database_url
-from unipath import Path as _Path
 
-DJANGO_ROOT = _Path(__file__).ancestor(2)
-REPO_ROOT = DJANGO_ROOT.ancestor(1)
+from .utils import *
 
 DEBUG = False
 TEMPLATE_DEBUG = False
@@ -24,6 +22,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Helper apps
+    'djangobower',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -63,9 +64,22 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIR = (
+    DJANGO_ROOT.child('assets')
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'djangobower.finders.BowerFinder',
+)
+
 # Get SECRET_KEY from env
 SECRET_KEY = getenv('SECRET_KEY')
+
+# Other common config files
+
+from .bower import *
