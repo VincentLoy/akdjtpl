@@ -3,15 +3,12 @@
 # ActiveSeed Website
 # (c) 2014 ActivKonnect
 
-from django.conf.urls import patterns, include, url
+from django.conf.urls import patterns, url
 from django.conf.urls.static import static
 from django.conf import settings
-from django.contrib import admin
 
 urlpatterns = patterns(
-    '',
+    'activeseed.apps.accounts.views',
 
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^accounts/', include('allauth.urls')),
-    url(r'^accounts/', include('activeseed.apps.accounts.urls')),
+    url('^test/$', 'index', name='accounts_test'),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

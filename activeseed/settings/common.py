@@ -84,6 +84,12 @@ STATICFILES_FINDERS = (
     'djangobower.finders.BowerFinder',
 )
 
+# Templates
+
+TEMPLATE_DIRS = (
+    DJANGO_ROOT.child('templates'),
+)
+
 # Get SECRET_KEY from env
 SECRET_KEY = getenv('SECRET_KEY')
 
