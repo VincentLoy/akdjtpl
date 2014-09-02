@@ -21,3 +21,6 @@ build
 
 # Celerybeat scheduler file:
 celerybeat-schedule
+
+# Local configuration
+/env
