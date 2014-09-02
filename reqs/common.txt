@@ -1,0 +1,6 @@
+-e git+https://github.com/django/django.git@ad96254af98f961d6691481c27127613afeee840#egg=Django
+Unipath==1.0
+django-compressor==1.4
+ipython==2.2.0
+dj-database-url==0.3.0
+psycopg2==2.5.4
