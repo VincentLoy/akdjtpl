@@ -14,6 +14,8 @@ TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
+
 INSTALLED_APPS = (
     # Base Django apps
     'django.contrib.admin',
@@ -22,9 +24,14 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     # Helper apps
     'djangobower',
+
+    # Django Allauth
+    'allauth',
+    'allauth.account',
 )
 
 MIDDLEWARE_CLASSES = (
