@@ -6,3 +6,4 @@ dj-database-url==0.3.0
 psycopg2==2.5.4
 django-bower==5.0.1
 django-allauth==0.18.0
+django-compressor==1.4

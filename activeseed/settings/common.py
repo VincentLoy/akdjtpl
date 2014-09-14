@@ -28,6 +28,7 @@ INSTALLED_APPS = (
 
     # Helper apps
     'djangobower',
+    'compressor',
 
     # Django Allauth
     'allauth',
@@ -74,8 +75,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIR = (
-    DJANGO_ROOT.child('assets')
+STATIC_ROOT = DJANGO_ROOT.child('assets')
+
+STATICFILES_DIRS = (
+    DJANGO_ROOT.child('static'),
 )
 
 STATICFILES_FINDERS = (
@@ -96,3 +99,4 @@ SECRET_KEY = getenv('SECRET_KEY')
 # Other common config files
 
 from .bower import *
+from .compress import *

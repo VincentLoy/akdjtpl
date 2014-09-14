@@ -15,6 +15,7 @@ build
 
 # Bower dependencies
 /activeseed/components
+/activeseed/assets
 
 # SQLite3 database files:
 *.db
