@@ -3,6 +3,8 @@
 # ActiveSeed Website
 # (c) 2014 ActivKonnect
 
+from __future__ import unicode_literals
+
 import subprocess
 import re
 from os import path
