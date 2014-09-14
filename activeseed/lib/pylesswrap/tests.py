@@ -6,6 +6,8 @@
 from unittest import TestCase
 from os import path
 import os
+from shutil import rmtree
+from tempfile import mkdtemp
 from activeseed.lib.pylesswrap.less import execute_command, Less, LessError
 
 
@@ -71,3 +73,35 @@ class TestLessWrapper(TestCase):
         with self.assertRaises(FailError):
             os.utime(file_name, (path.getatime(file_name), mtime + 2))
             less.mtime(file_name)
+
+    def test_compile(self):
+        less = Less({}, [path.join(ASSETS_DIR, 'b')])
+
+        out_dir = mkdtemp()
+
+        try:
+            out_file = path.join(out_dir, 'out.css')
+            less.compile(path.join(ASSETS_DIR, 'a', 'a.less'), out_file)
+
+            expected = """* {
+  color: red;
+}
+"""
+
+            with open(out_file, 'r') as f:
+                self.assertEqual(expected, f.read())
+        finally:
+            rmtree(out_dir)
+
+    def test_compile_invalid(self):
+        less = Less({}, [path.join(ASSETS_DIR, 'b')])
+
+        out_dir = mkdtemp()
+
+        try:
+            out_file = path.join(out_dir, 'out.css')
+
+            with self.assertRaises(LessError):
+                less.compile(path.join(ASSETS_DIR, 'a', 'invalid.txt'), out_file)
+        finally:
+            rmtree(out_dir)

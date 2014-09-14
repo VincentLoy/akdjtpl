@@ -55,7 +55,10 @@ class Less(object):
         )
 
     def compile(self, infile, outfile):
-        pass
+        out, err, ret = self.execute_command([infile, outfile], infile)
+
+        if ret:
+            raise LessError('Could not compile "{}".\nReason:\n'.format(infile, err))
 
     def mtime(self, infile):
         cache_valid = infile in self.cache
@@ -94,8 +97,3 @@ class Less(object):
                     pass
             else:
                 i += 1
-
-    @property
-    def command(self):
-        return None
-
