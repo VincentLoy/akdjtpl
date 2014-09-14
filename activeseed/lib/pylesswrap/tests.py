@@ -4,6 +4,7 @@
 # (c) 2014 ActivKonnect
 
 from __future__ import unicode_literals
+import codecs
 
 from unittest import TestCase
 from os import path
@@ -90,7 +91,7 @@ class TestLessWrapper(TestCase):
 }
 """
 
-            with open(out_file, 'r') as f:
+            with codecs.open(out_file, 'r', encoding='utf-8') as f:
                 self.assertEqual(expected, f.read())
         finally:
             rmtree(out_dir)
