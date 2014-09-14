@@ -70,16 +70,19 @@ class Less(object):
 
         files = out.split(' ')[1:]
 
-        for i in range(0, len(files)):
+        i = 0
+        while i < len(files):
             for j in range(i, len(files)):
                 file_name = ' '.join(files[i:j + 1])
 
                 try:
                     yield file_name, path.getmtime(file_name)
+                    i = j + 1
                     break
                 except OSError:
                     pass
-
+            else:
+                i += 1
 
     @property
     def command(self):
