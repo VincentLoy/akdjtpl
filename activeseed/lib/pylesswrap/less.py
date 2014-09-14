@@ -58,7 +58,18 @@ class Less(object):
         pass
 
     def mtime(self, infile):
-        pass
+        cache_valid = infile in self.cache
+
+        if cache_valid:
+            for file_name, mtime in self.cache[infile]:
+                if mtime != path.getmtime(file_name):
+                    cache_valid = False
+                    break
+
+        if not cache_valid:
+            self.cache[infile] = list(self.dependencies(infile))
+
+        return max(x[1] for x in self.cache[infile])
 
     def dependencies(self, infile):
         out, err, ret = self.execute_command(['-M', infile, 'output'], infile)

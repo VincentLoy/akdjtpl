@@ -5,6 +5,7 @@
 
 from unittest import TestCase
 from os import path
+import os
 from activeseed.lib.pylesswrap.less import execute_command, Less, LessError
 
 
@@ -46,3 +47,27 @@ class TestLessWrapper(TestCase):
 
         with self.assertRaises(LessError):
             list(less.dependencies(path.join(ASSETS_DIR, 'missing.less')))
+
+    def test_mtime(self):
+        class FailError(Exception):
+            pass
+
+        # noinspection PyUnusedLocal
+        def fail(*args, **kwargs):
+            raise FailError
+
+        less = Less({}, [])
+        file_name = path.join(ASSETS_DIR, 'a', 'without_space.less')
+        mtime = path.getmtime(file_name)
+
+        self.assertEqual(mtime, less.mtime(file_name))
+
+        os.utime(file_name, (path.getatime(file_name), mtime + 1))
+        self.assertEqual(mtime + 1, less.mtime(file_name))
+
+        less.dependencies = fail
+        self.assertEqual(mtime + 1, less.mtime(file_name))
+
+        with self.assertRaises(FailError):
+            os.utime(file_name, (path.getatime(file_name), mtime + 2))
+            less.mtime(file_name)
