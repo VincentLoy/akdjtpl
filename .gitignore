@@ -1,6 +1,9 @@
 # Python bytecode:
 *.py[co]
 
+# Compiled LESS
+*.css
+
 # Packaging files:
 *.egg*
 

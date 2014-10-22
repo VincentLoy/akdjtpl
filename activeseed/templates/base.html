@@ -1,4 +1,4 @@
-{% load compress %}
+{% load compressed %}
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
@@ -6,17 +6,7 @@
     <meta charset="UTF-8">
     <title>Base template</title>
 
-    {% compress js %}
-        <script type="text/javascript" src="{% static "angular/angular.js" %}"></script>
-    {% endcompress %}
-
-    {% compress css %}
-        <style type="text/less">
-        body {
-            background-color: lighten(red, 10%);
-        }
-        </style>
-    {% endcompress %}
+    {% compressed_css 'test' %}
 </head>
 <body>
     <h1>Base template</h1>

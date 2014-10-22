@@ -48,13 +48,14 @@ class Less(object):
         self.cache = cache
 
     def execute_command(self, args, infile):
-        return execute_command(
-            [
-                self.less_bin,
-                '--include-path={}'.format(path.pathsep.join(self.include_paths))
-            ] + args,
-            path.realpath(path.dirname(infile))
-        )
+        command = [self.less_bin]
+
+        if len(self.include_paths) > 0:
+            command += ['--include-path={}'.format(path.pathsep.join(self.include_paths))]
+
+        command += args
+
+        return execute_command(command, path.realpath(path.dirname(infile)))
 
     def compile(self, infile, outfile):
         out, err, ret = self.execute_command([infile, outfile], infile)

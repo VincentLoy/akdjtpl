@@ -4,8 +4,8 @@
 # (c) 2014 ActivKonnect
 
 from __future__ import unicode_literals
-import codecs
 
+import codecs
 from unittest import TestCase
 from os import path
 import os
@@ -108,3 +108,22 @@ class TestLessWrapper(TestCase):
                 less.compile(path.join(ASSETS_DIR, 'a', 'invalid.txt'), out_file)
         finally:
             rmtree(out_dir)
+
+    def test_no_include_path(self):
+        command_args = []
+
+        def fake_execute_command(args, cwd='.'):
+            command_args.extend(args)
+            return '', '', 0
+
+        l = Less({})
+
+        from activeseed.lib.pylesswrap import less
+        real_execute_command = less.execute_command
+        less.execute_command = fake_execute_command
+
+        l.compile('test.less', 'test.css')
+
+        less.execute_command = real_execute_command
+
+        self.assertEqual(['lessc', 'test.less', 'test.css'], command_args)

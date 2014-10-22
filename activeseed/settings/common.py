@@ -28,7 +28,10 @@ INSTALLED_APPS = (
 
     # Helper apps
     'djangobower',
-    'compressor',
+    'pipeline',
+
+    # Our apps
+    'activeseed.apps.accounts',
 
     # Django Allauth
     'allauth',
@@ -87,6 +90,8 @@ STATICFILES_FINDERS = (
     'djangobower.finders.BowerFinder',
 )
 
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
 # Templates
 
 TEMPLATE_DIRS = (
@@ -99,4 +104,4 @@ SECRET_KEY = getenv('SECRET_KEY')
 # Other common config files
 
 from .bower import *
-from .compress import *
+from .pipeline import *
