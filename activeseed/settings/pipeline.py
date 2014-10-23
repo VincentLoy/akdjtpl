@@ -4,14 +4,14 @@
 # (c) 2014 ActivKonnect
 
 PIPELINE_COMPILERS = (
-  'activeseed.lib.pylesswrap.pipeline_compiler.PyLessWrapCompiler',
+    'activeseed.lib.pylesswrap.pipeline_compiler.PyLessWrapCompiler',
 )
 
 PIPELINE_CSS = {
     'test': {
         'source_filenames': (
-            'test.less',
+            'activeseed/bootstrap/bootstrap.less',
         ),
-        'output_filename': 'css/test.css',
+        'output_filename': 'css/bootstrap.css',
     },
 }
