@@ -4,7 +4,9 @@
 # (c) 2014 ActivKonnect
 
 from pipeline.compilers import CompilerBase
+from activeseed.lib.pylesswrap.django_finders import list_dirs
 from activeseed.lib.pylesswrap.less import Less
+from pipeline.conf import settings
 
 
 files_cache = {}
@@ -15,7 +17,7 @@ class PyLessWrapCompiler(CompilerBase):
 
     def __init__(self, *args, **kwargs):
         super(PyLessWrapCompiler, self).__init__(*args, **kwargs)
-        self.less = Less(files_cache)  # TODO include paths and less binary
+        self.less = Less(files_cache, list(set(list_dirs())), settings.PIPELINE_LESS_BINARY)
 
     def match_file(self, filename):
         return filename.lower().endswith('.less')

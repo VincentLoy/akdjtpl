@@ -7,6 +7,7 @@ from __future__ import unicode_literals
 
 import subprocess
 import re
+import shlex
 from os import path
 
 
@@ -44,11 +45,11 @@ class LessError(Exception):
 class Less(object):
     def __init__(self, cache, include_paths=None, less_bin='lessc'):
         self.include_paths = include_paths if include_paths is not None else []
-        self.less_bin = less_bin
+        self.less_bin = shlex.split(less_bin)
         self.cache = cache
 
     def execute_command(self, args, infile):
-        command = [self.less_bin]
+        command = list(self.less_bin)
 
         if len(self.include_paths) > 0:
             command += ['--include-path={}'.format(path.pathsep.join(self.include_paths))]
