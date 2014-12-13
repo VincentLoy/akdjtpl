@@ -1,9 +1,7 @@
--e git+https://github.com/django/django.git@ad96254af98f961d6691481c27127613afeee840#egg=Django
+Django==1.7.1
 Unipath==1.0
-django-compressor==1.4
-ipython==2.2.0
 dj-database-url==0.3.0
 psycopg2==2.5.4
 django-bower==5.0.1
-django-allauth==0.18.0
-django-pipeline==1.3.25
+django-pipeline==1.4.2
+pylesswrap==0.1.2
