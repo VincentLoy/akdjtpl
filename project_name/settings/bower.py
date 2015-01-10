@@ -8,7 +8,6 @@ from .utils import *
 BOWER_COMPONENTS_ROOT = DJANGO_ROOT.child('components')
 
 BOWER_INSTALLED_APPS = (
-    'jquery#~2.1',
     'angular#~1.3',
     'angular-animate#~1.3',
     'angular-cookies#~1.3',

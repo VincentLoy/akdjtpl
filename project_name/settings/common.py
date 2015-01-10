@@ -98,6 +98,16 @@ TEMPLATE_DIRS = (
 # Get SECRET_KEY from env
 SECRET_KEY = getenv('SECRET_KEY')
 
+# Email sending
+DEFAULT_FROM_EMAIL = 'EMAIL-SENDER@EXAMPLE.COM'
+
+# Analytics
+METRON_SETTINGS = {
+    "google": {
+        1: getenv('GOOGLE_ANALYTICS_UID', ''),
+    }
+}
+
 # Other common config files
 
 from .bower import *
