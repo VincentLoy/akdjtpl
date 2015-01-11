@@ -8,7 +8,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = patterns(
-    '{{ project_name }}.apps.accounts.views',
+    '{{ project_name }}.apps.register.views',
 
     url('^test/$', 'index', name='accounts_test'),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

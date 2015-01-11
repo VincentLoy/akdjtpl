@@ -29,9 +29,15 @@ INSTALLED_APPS = (
     # Helper apps
     'djangobower',
     'pipeline',
+    'sorl.thumbnail',
 
     # Our apps
-    '{{ project_name }}.apps.accounts',
+    '{{ project_name }}.apps.register',
+
+    # Django Allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -42,6 +48,27 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    # General processors
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
+
+    # Django Allauth specific
+    'allauth.account.context_processors.account',
+    'allauth.socialaccount.context_processors.socialaccount',
+)
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 ROOT_URLCONF = '{{ project_name }}.urls'
@@ -100,6 +127,7 @@ SECRET_KEY = getenv('SECRET_KEY')
 
 # Email sending
 DEFAULT_FROM_EMAIL = 'EMAIL-SENDER@EXAMPLE.COM'
+SERVER_EMAIL = 'no-reply@aksrv.net'
 
 # Analytics
 METRON_SETTINGS = {
@@ -112,3 +140,4 @@ METRON_SETTINGS = {
 
 from .bower import *
 from .pipeline import *
+from .auth import *

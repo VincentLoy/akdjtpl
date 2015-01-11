@@ -12,5 +12,6 @@ urlpatterns = patterns(
     '',
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^accounts/', include('{{ project_name }}.apps.accounts.urls')),
+    url(r'^accounts/', include('allauth.urls')),
+    url(r'^accounts/', include('{{ project_name }}.apps.register.urls')),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
