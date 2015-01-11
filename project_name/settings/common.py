@@ -30,6 +30,8 @@ INSTALLED_APPS = (
     'djangobower',
     'pipeline',
     'sorl.thumbnail',
+    'crispy_forms',
+    'metron',
 
     # Our apps
     '{{ project_name }}.apps.register',
@@ -77,15 +79,11 @@ WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/dev/ref/settings/#databases
-
 DATABASES = {
     'default': dj_database_url.config(),
 }
 
 # Internationalization
-# https://docs.djangoproject.com/en/dev/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -98,7 +96,6 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-
 STATIC_URL = '/static/'
 
 STATIC_ROOT = DJANGO_ROOT.child('assets')
@@ -117,7 +114,6 @@ STATICFILES_FINDERS = (
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 # Templates
-
 TEMPLATE_DIRS = (
     DJANGO_ROOT.child('templates'),
 )
@@ -136,8 +132,10 @@ METRON_SETTINGS = {
     }
 }
 
-# Other common config files
+# Forms
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
+# Other common config files
 from .bower import *
 from .pipeline import *
 from .auth import *
