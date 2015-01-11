@@ -27,6 +27,17 @@ configuration.
 Otherwise, most of the things happen in `common.py`, or other files for specific areas (bower,
 auth, etc).
 
+Dependencies management
+-----------------------
+
+Dependencies are handled in three separate files
+
+:reqs/common.txt: prod/dev common dependencies
+:reqs/dev.txt: dev-only dependencies
+:reqs/prod.txt: prod-only dependencies
+
+Additionally, `requirements.txt` is an alias for `reqs/prod.txt`.
+
 Environment variables
 ---------------------
 
