@@ -27,6 +27,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
 
     # Helper apps
+    'raven.contrib.django.raven_compat',
     'djangobower',
     'pipeline',
     'sorl.thumbnail',

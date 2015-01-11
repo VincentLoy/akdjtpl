@@ -13,6 +13,7 @@ needs we usually face:
 - Automatic Bootstrap forms
 - Google Analytics
 - Amazon S3 storage
+- Sentry integration
 
 It is tailored for Python 3, HTTPS servers and Gunicorn.
 
@@ -27,6 +28,7 @@ Environment variables
 :AWS_STORAGE_BUCKET_NAME: *(mandatory in prod)* AWS Bucket Name
 :AWS_S3_CUSTOM_DOMAIN: *(mandatory in prod)* Domain at which you can find the files, a.k.a CDN's
                        domain
+:SENTRY_DSN: *(optional)* Sentry DSN for errors logging
 
 Users signup/login
 ------------------
