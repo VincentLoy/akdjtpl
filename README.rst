@@ -17,6 +17,16 @@ needs we usually face:
 
 It is tailored for Python 3, HTTPS servers and Gunicorn.
 
+Configuration organization
+--------------------------
+
+You can find the configuration in `project_name/settings`. There is two configuration file you can
+use as `DJANGO_SETTINGS_MODULE`: `dev.py` and `prod.py`. They both hold prod- or dev-specific
+configuration.
+
+Otherwise, most of the things happen in `common.py`, or other files for specific areas (bower,
+auth, etc).
+
 Environment variables
 ---------------------
 
@@ -65,6 +75,8 @@ JS/LESS compilation
 All of that is handled by `Django Pipeline <http://django-pipeline.readthedocs.org/en/latest/>`_.
 However its default LESS compiler is shitty, and has been replaced with
 `a custom one <https://github.com/Xowap/pylesswrap>`_.
+
+You can configure Pipeline in the file `project_name/settings/pipeline.py`.
 
 Thumbnails
 ----------
