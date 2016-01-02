@@ -1,5 +1,5 @@
 Django==1.9
-django-allauth==0.19.0
+django-allauth==0.24.1
 django-bower==5.0.1
 django-crispy-forms==1.4.0
 django-pipeline==1.4.2
@@ -10,5 +10,5 @@ Pillow==2.7.0
 psycopg2==2.5.4
 pylesswrap==0.1.2
 raven==5.1.1
-sorl-thumbnail==12.2
+#sorl-thumbnail==12.2
 Unipath==1.0
